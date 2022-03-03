@@ -32,6 +32,8 @@ namespace CulturedDownloader
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // button1
@@ -58,46 +60,50 @@ namespace CulturedDownloader
             // 
             // checkedListBox1
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17"});
             this.checkedListBox1.Location = new System.Drawing.Point(26, 85);
             this.checkedListBox1.MultiColumn = true;
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(753, 274);
+            this.checkedListBox1.Size = new System.Drawing.Size(509, 274);
+            this.checkedListBox1.Sorted = true;
             this.checkedListBox1.TabIndex = 2;
+            this.checkedListBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.checkedListBox1_MouseClick);
+            this.checkedListBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.checkedListBox1_MouseMove);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(26, 12);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(753, 57);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // checkedListBox2
+            // 
+            this.checkedListBox2.FormattingEnabled = true;
+            this.checkedListBox2.Location = new System.Drawing.Point(551, 85);
+            this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.Size = new System.Drawing.Size(228, 274);
+            this.checkedListBox2.TabIndex = 4;
             // 
             // Tags
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkedListBox2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Tags";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form2";
+            this.Text = "Select Tags";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -105,6 +111,8 @@ namespace CulturedDownloader
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        public System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.CheckedListBox checkedListBox2;
     }
 }
