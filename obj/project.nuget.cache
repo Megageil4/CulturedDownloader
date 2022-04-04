@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZeNxYww4Nkn6y7HqqMxp2j+2PCz9XL+nj54lqYGBlo7gLcmsUlBCU7RychsdopHMui0TLulFvIJBRgJVcNo8Lg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Daniel Lekomzew\\source\\repos\\CulturedDownloaderV3\\CulturedDownloaderV3\\CulturedDownloaderV3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Daniel Lekomzew\\.nuget\\packages\\fontawesome.sharp\\5.15.4\\fontawesome.sharp.5.15.4.nupkg.sha512",
+    "C:\\Users\\Daniel Lekomzew\\.nuget\\packages\\htmlagilitypack\\1.11.42\\htmlagilitypack.1.11.42.nupkg.sha512"
+  ],
+  "logs": []
+}
