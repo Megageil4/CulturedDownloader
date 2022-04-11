@@ -74,7 +74,7 @@ namespace CulturedDownloaderV3
         //    return images;
         //}
 
-        public static void OpenImagesInBrowser(string[] images, bool incognito)
+        public static void OpenImagesInBrowser(string[] images)
         {
             for (int i = 0; i < images.Length; i++)
             {
@@ -82,8 +82,8 @@ namespace CulturedDownloaderV3
                 {
                     using (var process = new Process())
                     {
-                        process.StartInfo.FileName = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
-                        if (incognito)
+                        process.StartInfo.FileName = MainWindow.settings.BrowserPath.Text;
+                        if (MainWindow.settings.Incognito.Checked)
                         {
                             process.StartInfo.Arguments = images[i] + " --incognito";
                         }

@@ -111,7 +111,7 @@ namespace CulturedDownloaderV3
                 pageId += 42;
                 count -= 42;
 
-                Rule34Grapper.OpenImagesInBrowser(images, true);
+                Rule34Grapper.OpenImagesInBrowser(images);
             }
         }
     }

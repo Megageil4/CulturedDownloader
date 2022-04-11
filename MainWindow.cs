@@ -14,11 +14,11 @@ namespace CulturedDownloaderV3
     {
         public Color basecolor = Color.FromArgb(45, 45, 48);
 
-        public HomeWindow home = new HomeWindow();
-        public BrowserWindow browser = new BrowserWindow();
-        public DownloadWindow download = new DownloadWindow();
-        public SettingsWindow settings = new SettingsWindow();
-        public InfoWindow info = new InfoWindow();
+        public static HomeWindow home = new HomeWindow();
+        public static BrowserWindow browser = new BrowserWindow();
+        public static DownloadWindow download = new DownloadWindow();
+        public static SettingsWindow settings = new SettingsWindow();
+        public static InfoWindow info = new InfoWindow();
 
         public MainWindow()
         {
