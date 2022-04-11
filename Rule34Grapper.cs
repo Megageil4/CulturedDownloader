@@ -9,61 +9,88 @@ namespace CulturedDownloaderV3
 {
     class Rule34Grapper
     {
+        public string XPath { get; set; }
+        public string ImageXpath { get; set; }
+        public string VideoXpath { get; set; }
+        public string PageUrl { get; set; }
+        public string ImagePrefix { get; set; }
 
-        public static List<string> GetChildPages(string parentUrl, string xPath, string childSubstring,HtmlAgilityPack.HtmlWeb webloader)
+        private HtmlAgilityPack.HtmlWeb webloader = new HtmlAgilityPack.HtmlWeb();
+
+        public string[] GetChildPages(int count)
         {
-            HtmlAgilityPack.HtmlDocument parentpage = webloader.Load(parentUrl);
-            List<string> childUrls = new List<string>();
+            string[] pages = new string[42];
+            HtmlAgilityPack.HtmlDocument parentpage = webloader.Load(PageUrl);
 
-            foreach (var imagePreview in parentpage.DocumentNode.SelectNodes(xPath))
+            var imagePreviews = parentpage.DocumentNode.SelectNodes(XPath);
+
+
+            for (int i = 0; i < count; i++)
             {
-                string imageSource = imagePreview.InnerHtml;
-                imageSource = childSubstring + getBetween(imageSource,"id=\"","\"").Substring(1);
-                childUrls.Add(imageSource);
-            }
+                if (i >= imagePreviews.Count)
+                    break;
 
-            return childUrls;
-        }
+                string imagePost = imagePreviews[i].InnerHtml;
+                imagePost = ImagePrefix + getBetween(imagePost, "id=\"", "\"").Substring(1);
 
-        public static List<string> GetImages(List<string> childUrls,string imageXpath, string videoXpath, HtmlAgilityPack.HtmlWeb webloader)
-        {
-            List<string> images = new List<string>();
+                HtmlAgilityPack.HtmlDocument website = webloader.Load(imagePost);
 
-            for (int i = 0; i < childUrls.Count; i++)
-            {
-                HtmlAgilityPack.HtmlDocument website = webloader.Load(childUrls[i]);
-                string imageUrl = "";
                 try
                 {
-                    imageUrl = website.DocumentNode.SelectNodes(imageXpath)[0].OuterHtml;
+                    pages[i] = website.DocumentNode.SelectNodes(ImageXpath)[0].OuterHtml;
                 }
                 catch
                 {
-                    imageUrl = website.DocumentNode.SelectSingleNode(videoXpath).OuterHtml;
+                    pages[i] = website.DocumentNode.SelectSingleNode(VideoXpath).OuterHtml;
                 }
-                imageUrl = getBetween(imageUrl, "src=\"", "\"");
-                images.Add(imageUrl);
 
+                pages[i] = getBetween(pages[i], "src=\"", "\"");
             }
 
-            return images;
+            return pages;
         }
 
-        public static void OpenImagesInBrowser(List<string> images, bool incognito)
+        //public static List<string> GetImages(List<string> childUrls,string imageXpath, string videoXpath, HtmlAgilityPack.HtmlWeb webloader)
+        //{
+        //    List<string> images = new List<string>();
+
+        //    for (int i = 0; i < childUrls.Count; i++)
+        //    {
+        //        HtmlAgilityPack.HtmlDocument website = webloader.Load(childUrls[i]);
+        //        string imageUrl = "";
+        //        try
+        //        {
+        //            imageUrl = website.DocumentNode.SelectNodes(imageXpath)[0].OuterHtml;
+        //        }
+        //        catch
+        //        {
+        //            imageUrl = website.DocumentNode.SelectSingleNode(videoXpath).OuterHtml;
+        //        }
+        //        imageUrl = getBetween(imageUrl, "src=\"", "\"");
+        //        images.Add(imageUrl);
+
+        //    }
+
+        //    return images;
+        //}
+
+        public static void OpenImagesInBrowser(string[] images, bool incognito)
         {
-            for (int i = 0; i < images.Count; i++)
+            for (int i = 0; i < images.Length; i++)
             {
-                using (var process = new Process())
+                if (images[i] != null)
                 {
-                    process.StartInfo.FileName = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
-                    if (incognito)
+                    using (var process = new Process())
                     {
-                        process.StartInfo.Arguments = images[i] + " --incognito";
+                        process.StartInfo.FileName = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
+                        if (incognito)
+                        {
+                            process.StartInfo.Arguments = images[i] + " --incognito";
+                        }
+                        process.Start();
                     }
-                    process.Start();
                 }
             }
-
         }
 
         private static string getBetween(string strSource, string strStart, string strEnd)
@@ -77,6 +104,15 @@ namespace CulturedDownloaderV3
             }
 
             return "";
+        }
+
+        public Rule34Grapper(string xpath, string imageXpath, string videoXpath, string pageUrl, string imagePrefix)
+        {
+            XPath = xpath;
+            ImageXpath = imageXpath;
+            VideoXpath = videoXpath;
+            PageUrl = pageUrl;
+            ImagePrefix = imagePrefix;
         }
     }
 }
