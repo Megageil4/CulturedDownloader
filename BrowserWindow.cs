@@ -90,8 +90,19 @@ namespace CulturedDownloaderV3
             }
             string url = "https://rule34.xxx/index.php?page=post&s=list&tags=" + tags;
 
-            Rule34Grapper rule34Grapper = new Rule34Grapper(@"//span[@class='thumb']", "//img[@id='image']", "//source[@type='video/mp4']",
+            Rule34Grapper rule34Grapper = new Rule34Grapper();
+
+            if (MainWindow.settings.SourceSelection.Text == "Rule34.xxx")
+            {
+                rule34Grapper = new Rule34Grapper(@"//span[@class='thumb']", "//img[@id='image']", "//source[@type='video/mp4']",
                                                             url, "https://rule34.xxx/index.php?page=post&s=view&id=");
+            }
+            else // !TODO: add xboru xpaths and urls!
+            {
+                rule34Grapper = new Rule34Grapper(@"//span[@class='thumb']", "//img[@id='image']", "//source[@type='video/mp4']",
+                                                            url, "https://rule34.xxx/index.php?page=post&s=view&id=");
+            }
+
 
             int count = (int)ImageEndIndex.Value - (int)ImageStartIndex.Value;
             int pageId = (int)ImageStartIndex.Value;
@@ -101,11 +112,11 @@ namespace CulturedDownloaderV3
                 string[] images;
                 if (count - 42 <= 0)
                 {
-                  images = rule34Grapper.GetChildPages(count);
+                    images = rule34Grapper.GetChildPages(count);
                 }
                 else
                 {
-                  images = rule34Grapper.GetChildPages(42);
+                    images = rule34Grapper.GetChildPages(42);
                 }
 
                 pageId += 42;
@@ -113,6 +124,19 @@ namespace CulturedDownloaderV3
 
                 Rule34Grapper.OpenImagesInBrowser(images);
             }
+        }
+
+        private void IncludedTags_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                this.OpenInBrowser_Click(this, e);
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -27,24 +27,32 @@ namespace CulturedDownloaderV3
 
             for (int i = 0; i < count; i++)
             {
-                if (i >= imagePreviews.Count)
-                    break;
-
-                string imagePost = imagePreviews[i].InnerHtml;
-                imagePost = ImagePrefix + getBetween(imagePost, "id=\"", "\"").Substring(1);
-
-                HtmlAgilityPack.HtmlDocument website = webloader.Load(imagePost);
-
                 try
                 {
-                    pages[i] = website.DocumentNode.SelectNodes(ImageXpath)[0].OuterHtml;
+                    if (i >= imagePreviews.Count)
+                        break;
+
+                    string imagePost = imagePreviews[i].InnerHtml;
+                    imagePost = ImagePrefix + getBetween(imagePost, "id=\"", "\"").Substring(1);
+
+                    HtmlAgilityPack.HtmlDocument website = webloader.Load(imagePost);
+
+                    try
+                    {
+                        pages[i] = website.DocumentNode.SelectNodes(ImageXpath)[0].OuterHtml;
+                    }
+                    catch
+                    {
+                        pages[i] = website.DocumentNode.SelectSingleNode(VideoXpath).OuterHtml;
+                    }
+
+                    pages[i] = getBetween(pages[i], "src=\"", "\"");
+
                 }
                 catch
                 {
-                    pages[i] = website.DocumentNode.SelectSingleNode(VideoXpath).OuterHtml;
+                    continue;
                 }
-
-                pages[i] = getBetween(pages[i], "src=\"", "\"");
             }
 
             return pages;
@@ -106,6 +114,53 @@ namespace CulturedDownloaderV3
             return "";
         }
 
+        public static void Download(string path, string[] images)
+        {
+            for (int i = 0; i < images.Length; i++)
+            {
+                if (images[i] != null)
+                {
+                    try
+                    {
+                        System.Drawing.Image png = DownloadImageFromUrl(images[i].Trim());
+                        string filePath = path + "\\" + "TODO: extract image id" + ".png";
+                        png.Save(filePath);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                    
+                }
+            }
+        }
+
+        private static System.Drawing.Image DownloadImageFromUrl(string imageUrl)
+        {
+            System.Drawing.Image image = null;
+
+            try
+            {
+                System.Net.HttpWebRequest webRequest = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(imageUrl);
+                webRequest.AllowWriteStreamBuffering = true;
+                webRequest.Timeout = 30000;
+
+                System.Net.WebResponse webResponse = webRequest.GetResponse();
+
+                System.IO.Stream stream = webResponse.GetResponseStream();
+
+                image = System.Drawing.Image.FromStream(stream);
+
+                webResponse.Close();
+            }
+            catch
+            {
+                throw new Exception();
+            }
+
+            return image;
+        }
+
         public Rule34Grapper(string xpath, string imageXpath, string videoXpath, string pageUrl, string imagePrefix)
         {
             XPath = xpath;
@@ -114,5 +169,7 @@ namespace CulturedDownloaderV3
             PageUrl = pageUrl;
             ImagePrefix = imagePrefix;
         }
+
+        public Rule34Grapper() { }
     }
 }

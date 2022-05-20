@@ -14,10 +14,10 @@ namespace CulturedDownloaderV3
     {
         public Color basecolor = Color.FromArgb(45, 45, 48);
 
+        public static SettingsWindow settings = new SettingsWindow();
         public static HomeWindow home = new HomeWindow();
         public static BrowserWindow browser = new BrowserWindow();
         public static DownloadWindow download = new DownloadWindow();
-        public static SettingsWindow settings = new SettingsWindow();
         public static InfoWindow info = new InfoWindow();
 
         public MainWindow()
@@ -25,9 +25,9 @@ namespace CulturedDownloaderV3
             InitializeComponent();
             ResetBars(this);
             homeBar.Visible = true;
+            DockChild(settings, this);
             DockChild(browser, this);
             DockChild(download, this);
-            DockChild(settings, this);
             DockChild(info, this);
             DockChild(home,this);
         }
