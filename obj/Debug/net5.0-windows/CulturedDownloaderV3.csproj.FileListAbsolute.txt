@@ -27,3 +27,5 @@ C:\Users\Daniel Lekomzew\source\repos\CulturedDownloaderV3\CulturedDownloaderV3\
 C:\Users\Daniel Lekomzew\source\repos\CulturedDownloaderV3\CulturedDownloaderV3\obj\Debug\net5.0-windows\CulturedDownloaderV3.csproj.ResolveComReference.cache
 C:\Users\Daniel Lekomzew\source\repos\CulturedDownloaderV3\CulturedDownloaderV3\obj\Debug\net5.0-windows\CulturedDownloaderV3.csproj.CopyComplete
 C:\Users\Daniel Lekomzew\source\repos\CulturedDownloaderV3\CulturedDownloaderV3\obj\Debug\net5.0-windows\refint\CulturedDownloaderV3.dll
+C:\Users\Daniel Lekomzew\source\repos\CulturedDownloaderV3\CulturedDownloaderV3\bin\Debug\net5.0-windows\DiscordRPC.dll
+C:\Users\Daniel Lekomzew\source\repos\CulturedDownloaderV3\CulturedDownloaderV3\bin\Debug\net5.0-windows\Newtonsoft.Json.dll

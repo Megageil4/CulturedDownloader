@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiscordRPC;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace CulturedDownloaderV3
     {
         public TagSelection InludeSlectscreen = new TagSelection();
         public TagSelection ExcludeSlectscreen = new TagSelection();
+        public static int opendCount = 0;
         public BrowserWindow()
         {
             InitializeComponent();
@@ -76,17 +78,14 @@ namespace CulturedDownloaderV3
             {
                 tags = tags + "+-" + ExcludedTags.Text.Replace(" ", "_").Replace("+", "+-").Replace(":", "%3a").Replace("(", "%28").Replace(")", "%29").Replace("!", "%21").Replace("?", "%3f");
             }
-
+            
             if (AnitFurry.Checked)
-            {
-                string furry = "+-furry+-fur+-mlp+-feline+-canine+-zoophilia+-lizard+-avian+-rodent+-marine+-dragon+" +
-                   "-bovine+-knot+-furry_only+-gay-animal_*+-anthro";
-                tags = tags + furry;
-            }
+                {
+                    tags = tags + Rule34Grapper.furry;
+                }
             if (AntiGay.Checked)
             {
-                string gay = "+-gay*+-solo_male+-male_only+-yaoi";      // Exclude all gay tags
-                tags = tags + gay;
+                tags = tags + Rule34Grapper.gay;
             }
             string url = "https://rule34.xxx/index.php?page=post&s=list&tags=" + tags;
 
@@ -105,8 +104,10 @@ namespace CulturedDownloaderV3
 
 
             int count = (int)ImageEndIndex.Value - (int)ImageStartIndex.Value;
+            int totalCount = count;
+            opendCount += count;
             int pageId = (int)ImageStartIndex.Value;
-            for (int i = 0; i < count / 42 + 1; i++)
+            for (int i = 0; i < totalCount / 42 + 1; i++)
             {
                 rule34Grapper.PageUrl = rule34Grapper.PageUrl + "&pid=" + pageId;
                 string[] images;
@@ -124,6 +125,10 @@ namespace CulturedDownloaderV3
 
                 Rule34Grapper.OpenImagesInBrowser(images);
             }
+            if (MainWindow.settings.DiscordRichPresenceButton.Checked)
+            {
+                DRichPresence(opendCount);
+            }
         }
 
         private void IncludedTags_KeyPress(object sender, KeyPressEventArgs e)
@@ -137,6 +142,19 @@ namespace CulturedDownloaderV3
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+        public void DRichPresence(int count)
+        {
+            DiscordRichPresence.client.SetPresence(new DiscordRPC.RichPresence()
+            {
+                Details = "Browser",
+                State = $"Already opend: {count}",
+                Assets = new Assets()
+                {
+                    LargeImageKey = "ico",
+                    SmallImageKey = "chrome-white",
+                }
+            });
         }
     }
 }

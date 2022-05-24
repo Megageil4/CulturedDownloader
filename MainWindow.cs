@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiscordRPC;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +31,20 @@ namespace CulturedDownloaderV3
             DockChild(download, this);
             DockChild(info, this);
             DockChild(home,this);
+            if (settings.DiscordRichPresenceButton.Checked)
+            {
+                DiscordRichPresence.client.Initialize();
+                DiscordRichPresence.client.SetPresence(new DiscordRPC.RichPresence()
+                {
+                    Details = "Home",
+                    State = "Doing nothing",
+                    Assets = new Assets()
+                    {
+                        LargeImageKey = "ico",
+                        SmallImageKey = "house-white",
+                    }
+                });
+            }
         }
 
         public static void ResetBars(MainWindow main)
@@ -55,7 +70,7 @@ namespace CulturedDownloaderV3
                 
             }
             child.BringToFront();
-            parent.TopMost = true;
+            //parent.TopMost = true;
         }
 
         private void homeButton_Click(object sender, EventArgs e)
@@ -63,7 +78,19 @@ namespace CulturedDownloaderV3
             ResetBars(this);
             homeBar.Visible = true;
             currentPage.Text = "Home Page";
-
+            if (settings.DiscordRichPresenceButton.Checked)
+            {
+                DiscordRichPresence.client.SetPresence(new DiscordRPC.RichPresence()
+                {
+                    Details = "Home",
+                    State = "Doing nothing",
+                    Assets = new Assets()
+                    {
+                        LargeImageKey = "ico",
+                        SmallImageKey = "house-white",
+                    }
+                });
+            }
             DockChild(home, this);
         }
 
@@ -72,7 +99,10 @@ namespace CulturedDownloaderV3
             ResetBars(this);
             browserBar.Visible = true;
             currentPage.Text = "Open in Browser";
-
+            if (settings.DiscordRichPresenceButton.Checked)
+            {
+                browser.DRichPresence(BrowserWindow.opendCount);
+            }
             DockChild(browser, this);
         }
 
@@ -81,7 +111,10 @@ namespace CulturedDownloaderV3
             ResetBars(this);
             downloadBar.Visible = true;
             currentPage.Text = "Download";
-            
+            if (settings.DiscordRichPresenceButton.Checked)
+            {
+                download.DRichPresence(DownloadWindow.downloadCount);
+            }
             DockChild(download, this);
         }
 
@@ -90,7 +123,10 @@ namespace CulturedDownloaderV3
             ResetBars(this);
             settingsBar.Visible = true;
             currentPage.Text = "Settings";
-
+            if (settings.DiscordRichPresenceButton.Checked)
+            {
+                settings.DRichPresence(0);
+            }
             DockChild(settings, this);
         }
 
@@ -99,7 +135,10 @@ namespace CulturedDownloaderV3
             ResetBars(this);
             infoBar.Visible = true;
             currentPage.Text = "Info";
-
+            if (settings.DiscordRichPresenceButton.Checked)
+            {
+                info.DRichPresence(0);
+            }
             DockChild(info, this);
         }
     }

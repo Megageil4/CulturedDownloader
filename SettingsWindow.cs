@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiscordRPC;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +31,36 @@ namespace CulturedDownloaderV3
         {
             folderBrowserDialog1.ShowDialog();
             BrowserPath.Text = folderBrowserDialog1.SelectedPath;
+        }
+
+        public void DRichPresence(int count)
+        {
+            DiscordRichPresence.client.SetPresence(new DiscordRPC.RichPresence()
+            {
+                Details = "Settings",
+                State = $"Changing settings",
+                Assets = new Assets()
+                {
+                    LargeImageKey = "ico",
+                    SmallImageKey = "gear-white",
+                }
+            });
+        }
+
+        private void DiscordRichPresenceButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DiscordRichPresenceButton.Checked)
+            {
+                if (!DiscordRichPresence.client.IsInitialized)
+                {
+                    DiscordRichPresence.client.Initialize();
+                    DRichPresence(0);
+                }
+            }
+            else
+            {
+                DiscordRichPresence.client.ClearPresence();
+            }
         }
     }
 }

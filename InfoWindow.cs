@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiscordRPC;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,20 @@ namespace CulturedDownloaderV3
         public InfoWindow()
         {
             InitializeComponent();
+        }
+
+        public void DRichPresence(int count)
+        {
+            DiscordRichPresence.client.SetPresence(new DiscordRPC.RichPresence()
+            {
+                Details = "Info",
+                State = $"Viewing info",
+                Assets = new Assets()
+                {
+                    LargeImageKey = "ico",
+                    SmallImageKey = "info-white",
+                }
+            });
         }
     }
 }

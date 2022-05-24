@@ -47,7 +47,7 @@ namespace CulturedDownloaderV3
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.DiscordRichPresence = new System.Windows.Forms.CheckBox();
+            this.DiscordRichPresenceButton = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -63,22 +63,20 @@ namespace CulturedDownloaderV3
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.Source);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(11, 239);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel2.Location = new System.Drawing.Point(10, 180);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(0, 7, 0, 0);
-            this.panel2.Size = new System.Drawing.Size(892, 85);
+            this.panel2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.panel2.Size = new System.Drawing.Size(780, 64);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.SourceSelection);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(228, 7);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel3.Location = new System.Drawing.Point(181, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(0, 0, 80, 0);
-            this.panel3.Size = new System.Drawing.Size(467, 78);
+            this.panel3.Padding = new System.Windows.Forms.Padding(0, 0, 70, 0);
+            this.panel3.Size = new System.Drawing.Size(409, 59);
             this.panel3.TabIndex = 3;
             // 
             // SourceSelection
@@ -94,9 +92,8 @@ namespace CulturedDownloaderV3
             "Rule34.xxx",
             "Xbooru.com"});
             this.SourceSelection.Location = new System.Drawing.Point(0, 0);
-            this.SourceSelection.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SourceSelection.Name = "SourceSelection";
-            this.SourceSelection.Size = new System.Drawing.Size(387, 53);
+            this.SourceSelection.Size = new System.Drawing.Size(339, 45);
             this.SourceSelection.TabIndex = 2;
             // 
             // Source
@@ -105,9 +102,9 @@ namespace CulturedDownloaderV3
             this.Source.Dock = System.Windows.Forms.DockStyle.Left;
             this.Source.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Source.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Source.Location = new System.Drawing.Point(0, 7);
+            this.Source.Location = new System.Drawing.Point(0, 5);
             this.Source.Name = "Source";
-            this.Source.Size = new System.Drawing.Size(228, 46);
+            this.Source.Size = new System.Drawing.Size(181, 37);
             this.Source.TabIndex = 3;
             this.Source.Text = "Image source:";
             // 
@@ -118,10 +115,9 @@ namespace CulturedDownloaderV3
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel1.Location = new System.Drawing.Point(11, 13);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(10, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(892, 113);
+            this.panel1.Size = new System.Drawing.Size(780, 85);
             this.panel1.TabIndex = 2;
             // 
             // FolderPath
@@ -130,11 +126,11 @@ namespace CulturedDownloaderV3
             this.FolderPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FolderPath.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FolderPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.FolderPath.Location = new System.Drawing.Point(207, 28);
-            this.FolderPath.Margin = new System.Windows.Forms.Padding(34, 40, 34, 40);
+            this.FolderPath.Location = new System.Drawing.Point(181, 21);
+            this.FolderPath.Margin = new System.Windows.Forms.Padding(30);
             this.FolderPath.Multiline = true;
             this.FolderPath.Name = "FolderPath";
-            this.FolderPath.Size = new System.Drawing.Size(587, 76);
+            this.FolderPath.Size = new System.Drawing.Size(514, 57);
             this.FolderPath.TabIndex = 5;
             // 
             // OpenFolderDialog
@@ -146,11 +142,10 @@ namespace CulturedDownloaderV3
             this.OpenFolderDialog.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.OpenFolderDialog.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.OpenFolderDialog.IconSize = 60;
-            this.OpenFolderDialog.Location = new System.Drawing.Point(806, 0);
-            this.OpenFolderDialog.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OpenFolderDialog.Location = new System.Drawing.Point(705, 0);
             this.OpenFolderDialog.Name = "OpenFolderDialog";
-            this.OpenFolderDialog.Padding = new System.Windows.Forms.Padding(11, 11, 0, 0);
-            this.OpenFolderDialog.Size = new System.Drawing.Size(86, 113);
+            this.OpenFolderDialog.Padding = new System.Windows.Forms.Padding(10, 8, 0, 0);
+            this.OpenFolderDialog.Size = new System.Drawing.Size(75, 85);
             this.OpenFolderDialog.TabIndex = 6;
             this.OpenFolderDialog.UseVisualStyleBackColor = true;
             this.OpenFolderDialog.Click += new System.EventHandler(this.OpenFolderDialog_Click);
@@ -163,8 +158,8 @@ namespace CulturedDownloaderV3
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 31, 0, 0);
-            this.label1.Size = new System.Drawing.Size(213, 77);
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 23, 0, 0);
+            this.label1.Size = new System.Drawing.Size(170, 60);
             this.label1.TabIndex = 4;
             this.label1.Text = "Default path:";
             // 
@@ -174,10 +169,9 @@ namespace CulturedDownloaderV3
             this.panel4.Controls.Add(this.iconButton1);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(11, 126);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel4.Location = new System.Drawing.Point(10, 95);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(892, 113);
+            this.panel4.Size = new System.Drawing.Size(780, 85);
             this.panel4.TabIndex = 3;
             // 
             // BrowserPath
@@ -186,11 +180,11 @@ namespace CulturedDownloaderV3
             this.BrowserPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BrowserPath.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BrowserPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.BrowserPath.Location = new System.Drawing.Point(207, 20);
-            this.BrowserPath.Margin = new System.Windows.Forms.Padding(34, 40, 34, 40);
+            this.BrowserPath.Location = new System.Drawing.Point(181, 15);
+            this.BrowserPath.Margin = new System.Windows.Forms.Padding(30);
             this.BrowserPath.Multiline = true;
             this.BrowserPath.Name = "BrowserPath";
-            this.BrowserPath.Size = new System.Drawing.Size(587, 76);
+            this.BrowserPath.Size = new System.Drawing.Size(514, 57);
             this.BrowserPath.TabIndex = 5;
             // 
             // iconButton1
@@ -202,11 +196,10 @@ namespace CulturedDownloaderV3
             this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 60;
-            this.iconButton1.Location = new System.Drawing.Point(806, 0);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton1.Location = new System.Drawing.Point(705, 0);
             this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Padding = new System.Windows.Forms.Padding(11, 11, 0, 0);
-            this.iconButton1.Size = new System.Drawing.Size(86, 113);
+            this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 8, 0, 0);
+            this.iconButton1.Size = new System.Drawing.Size(75, 85);
             this.iconButton1.TabIndex = 6;
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
@@ -219,8 +212,8 @@ namespace CulturedDownloaderV3
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 31, 0, 0);
-            this.label2.Size = new System.Drawing.Size(224, 77);
+            this.label2.Padding = new System.Windows.Forms.Padding(0, 23, 0, 0);
+            this.label2.Size = new System.Drawing.Size(178, 60);
             this.label2.TabIndex = 4;
             this.label2.Text = "Browser path:";
             // 
@@ -229,10 +222,9 @@ namespace CulturedDownloaderV3
             this.panel5.Controls.Add(this.Incognito);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(11, 324);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel5.Location = new System.Drawing.Point(10, 244);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(892, 100);
+            this.panel5.Size = new System.Drawing.Size(780, 75);
             this.panel5.TabIndex = 4;
             // 
             // Incognito
@@ -244,11 +236,10 @@ namespace CulturedDownloaderV3
             this.Incognito.FlatAppearance.BorderSize = 0;
             this.Incognito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Incognito.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Incognito.Location = new System.Drawing.Point(170, 0);
-            this.Incognito.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Incognito.Location = new System.Drawing.Point(136, 0);
             this.Incognito.Name = "Incognito";
-            this.Incognito.Padding = new System.Windows.Forms.Padding(3, 0, 0, 40);
-            this.Incognito.Size = new System.Drawing.Size(39, 100);
+            this.Incognito.Padding = new System.Windows.Forms.Padding(3, 0, 0, 30);
+            this.Incognito.Size = new System.Drawing.Size(34, 75);
             this.Incognito.TabIndex = 5;
             this.Incognito.UseVisualStyleBackColor = true;
             // 
@@ -260,7 +251,7 @@ namespace CulturedDownloaderV3
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 46);
+            this.label3.Size = new System.Drawing.Size(136, 37);
             this.label3.TabIndex = 4;
             this.label3.Text = "Incognito:";
             // 
@@ -273,37 +264,35 @@ namespace CulturedDownloaderV3
             this.panel6.Controls.Add(this.panel1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel6.Name = "panel6";
-            this.panel6.Padding = new System.Windows.Forms.Padding(11, 13, 11, 13);
-            this.panel6.Size = new System.Drawing.Size(914, 600);
+            this.panel6.Padding = new System.Windows.Forms.Padding(10);
+            this.panel6.Size = new System.Drawing.Size(800, 450);
             this.panel6.TabIndex = 5;
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.DiscordRichPresence);
+            this.panel7.Controls.Add(this.DiscordRichPresenceButton);
             this.panel7.Controls.Add(this.label4);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(11, 424);
-            this.panel7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel7.Location = new System.Drawing.Point(10, 319);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(892, 100);
+            this.panel7.Size = new System.Drawing.Size(780, 75);
             this.panel7.TabIndex = 5;
             // 
-            // DiscordRichPresence
+            // DiscordRichPresenceButton
             // 
-            this.DiscordRichPresence.Dock = System.Windows.Forms.DockStyle.Left;
-            this.DiscordRichPresence.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.DiscordRichPresence.FlatAppearance.BorderSize = 0;
-            this.DiscordRichPresence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DiscordRichPresence.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DiscordRichPresence.Location = new System.Drawing.Point(356, 0);
-            this.DiscordRichPresence.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.DiscordRichPresence.Name = "DiscordRichPresence";
-            this.DiscordRichPresence.Padding = new System.Windows.Forms.Padding(3, 0, 0, 40);
-            this.DiscordRichPresence.Size = new System.Drawing.Size(39, 100);
-            this.DiscordRichPresence.TabIndex = 5;
-            this.DiscordRichPresence.UseVisualStyleBackColor = true;
+            this.DiscordRichPresenceButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.DiscordRichPresenceButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.DiscordRichPresenceButton.FlatAppearance.BorderSize = 0;
+            this.DiscordRichPresenceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DiscordRichPresenceButton.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DiscordRichPresenceButton.Location = new System.Drawing.Point(281, 0);
+            this.DiscordRichPresenceButton.Name = "DiscordRichPresenceButton";
+            this.DiscordRichPresenceButton.Padding = new System.Windows.Forms.Padding(3, 0, 0, 30);
+            this.DiscordRichPresenceButton.Size = new System.Drawing.Size(34, 75);
+            this.DiscordRichPresenceButton.TabIndex = 5;
+            this.DiscordRichPresenceButton.UseVisualStyleBackColor = true;
+            this.DiscordRichPresenceButton.CheckedChanged += new System.EventHandler(this.DiscordRichPresenceButton_CheckedChanged);
             // 
             // label4
             // 
@@ -313,19 +302,18 @@ namespace CulturedDownloaderV3
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(356, 46);
+            this.label4.Size = new System.Drawing.Size(281, 37);
             this.label4.TabIndex = 4;
             this.label4.Text = "Discord Rich Presence:";
             // 
             // SettingsWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SettingsWindow";
             this.Text = "SettingsWindow";
             this.panel2.ResumeLayout(false);
@@ -364,7 +352,7 @@ namespace CulturedDownloaderV3
         public System.Windows.Forms.CheckBox Incognito;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
-        public System.Windows.Forms.CheckBox DiscordRichPresence;
+        public System.Windows.Forms.CheckBox DiscordRichPresenceButton;
         private System.Windows.Forms.Label label4;
     }
 }

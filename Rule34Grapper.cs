@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CulturedDownloaderV3
 {
@@ -16,6 +20,9 @@ namespace CulturedDownloaderV3
         public string ImagePrefix { get; set; }
 
         private HtmlAgilityPack.HtmlWeb webloader = new HtmlAgilityPack.HtmlWeb();
+        public static string furry = "+-furry+-fur+-mlp+-feline+-canine+-zoophilia+-lizard+-avian+-rodent+-marine+-dragon+" +
+                                     "-bovine+-knot+-furry_only+-gay-animal_*+-anthro";
+        public static string gay = "+-gay*+-solo_male+-male_only+-yaoi";
 
         public string[] GetChildPages(int count)
         {
@@ -57,6 +64,7 @@ namespace CulturedDownloaderV3
 
             return pages;
         }
+        
 
         //public static List<string> GetImages(List<string> childUrls,string imageXpath, string videoXpath, HtmlAgilityPack.HtmlWeb webloader)
         //{
@@ -122,44 +130,50 @@ namespace CulturedDownloaderV3
                 {
                     try
                     {
-                        System.Drawing.Image png = DownloadImageFromUrl(images[i].Trim());
-                        string filePath = path + "\\" + "TODO: extract image id" + ".png";
-                        png.Save(filePath);
+                        Regex rx = new Regex(@"(?<name>\?\w+)");
+                        Match m = rx.Match(images[i]);
+                        string name = m.Groups["name"].Value.Remove(0,1);
+                        rx = new Regex(@"(?<ext>\.[^x,r].*\?)");
+                        m = rx.Match(images[i]);
+                        string ext = m.Groups["ext"].Value.Remove(m.Groups["ext"].Value.Length - 1);
+                            string filePath = path + "\\" + name + ext;
+                        WebClient webClient = new WebClient();
+                        webClient.DownloadFile(images[i], filePath);
                     }
                     catch (Exception)
                     {
-
+                        Console.WriteLine("E");
                     }
                     
                 }
             }
         }
 
-        private static System.Drawing.Image DownloadImageFromUrl(string imageUrl)
-        {
-            System.Drawing.Image image = null;
+        //private static System.Drawing.Image DownloadImageFromUrl(string imageUrl)
+        //{
+        //    System.Drawing.Image image = null;
 
-            try
-            {
-                System.Net.HttpWebRequest webRequest = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(imageUrl);
-                webRequest.AllowWriteStreamBuffering = true;
-                webRequest.Timeout = 30000;
+        //    try
+        //    {
+        //        System.Net.HttpWebRequest webRequest = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(imageUrl);
+        //        webRequest.AllowWriteStreamBuffering = true;
+        //        webRequest.Timeout = 30000;
 
-                System.Net.WebResponse webResponse = webRequest.GetResponse();
+        //        System.Net.WebResponse webResponse = webRequest.GetResponse();
 
-                System.IO.Stream stream = webResponse.GetResponseStream();
+        //        System.IO.Stream stream = webResponse.GetResponseStream();
 
-                image = System.Drawing.Image.FromStream(stream);
+        //        image = System.Drawing.Image.FromStream(stream);
 
-                webResponse.Close();
-            }
-            catch
-            {
-                throw new Exception();
-            }
+        //        webResponse.Close();
+        //    }
+        //    catch
+        //    {
+        //        throw new Exception();
+        //    }
 
-            return image;
-        }
+        //    return image;
+        //}
 
         public Rule34Grapper(string xpath, string imageXpath, string videoXpath, string pageUrl, string imagePrefix)
         {
